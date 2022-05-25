@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- DOCTYPE 변경 -->
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="franchiseSpace">
+	<typeAlias alias="egovMap"
+		type="egovframework.rte.psl.dataaccess.util.EgovMap" />
+	<typeAlias alias="franchiseVO"
+		type="main.service.FranchiseVO" /><!-- 데이터를 담을vo -->
+
+	<select id="franchiseDAO.selectFranchiseList"
+		resultClass="egovMap">
+
+		SELECT b.* FROM (
+		SELECT rownum rn, a.* FROM (
+		select fnum, franchisename, shopname, address, local
+		from franchise
+
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+
+
+		) a) b
+		where rn >= #startIndex# AND rn <![CDATA[<=]]>
+		#endIndex#
+
+	</select>
+
+	<select id="franchiseDAO.selectFranchiseTotal"
+		resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+	
+	<select id="franchiseDAO.selectFranchiseSeoulTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where local ='서울' and $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+ 
+	<select id="franchiseDAO.selectFranchiseIncheonTotal"  resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where local ='인천' and $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+	
+	<select id="franchiseDAO.selectFranchiseGyeongiTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where local ='경기도' and $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+	
+	
+	<select id="franchiseDAO.selectFranchiseBusanTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where local ='부산' and $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+	
+	<select id="franchiseDAO.selectFranchiseChungbukTotal"  resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where local ='충청북도' and $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+	
+	<select id="franchiseDAO.selectFranchiseChungnamTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where local ='충청남도' and $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+	
+	<select id="franchiseDAO.selectFranchiseDaeguTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where local ='대구광역시' and $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+	
+	<select id="franchiseDAO.selectFranchiseDaejeonTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where local ='대전' and $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+	
+	<select id="franchiseDAO.selectFranchiseGangwonTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where local ='강원도' and $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+	
+	<select id="franchiseDAO.selectFranchiseGwangjuTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where local ='광주' and $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+	
+	<select id="franchiseDAO.selectFranchiseGyeongbukTotal"  resultClass="java.lang.Integer">
+	
+		SELECT COUNT(*) total FROM franchise
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where local ='경상북도' and $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+	
+	
+	
+	<select id="franchiseDAO.selectFranchiseGyeongnamTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where local ='경상남도' and $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+	
+
+	
+	<select id="franchiseDAO.selectFranchiseJejuTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where local ='제주도' and $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+	
+	<select id="franchiseDAO.selectFranchiseJeonbukTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+			<isNotNull property="searchGubun">
+				<isNotNull property="searchText">
+					where local ='전라북도' and $searchGubun$ like '%$searchText$%'
+				</isNotNull>
+			</isNotNull>	
+		</select>
+	
+	<select id="franchiseDAO.selectFranchiseJeonnamTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+		w<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where local ='전라남도' and $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+	
+	<select id="franchiseDAO.selectFranchiseSejongTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where local ='세종' and $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+	
+	<select id="franchiseDAO.selectFranchiseUlsanTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) total FROM franchise
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				where local ='울산' and $searchGubun$ like '%$searchText$%'
+			</isNotNull>
+		</isNotNull>
+	</select>
+	 
+
+
+	<!-- 상세보기 아직 안함 -->
+	<select id="franchiseDAO.selectFranchiseDetail" resultClass="FranchiseVO">
+		select fnum, franchisename, shopname, address, local
+		from
+		franchise
+		where  fnum = #fnum# 
+
+	</select>
+</sqlMap>
