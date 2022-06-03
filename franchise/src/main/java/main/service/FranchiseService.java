@@ -9,7 +9,6 @@ public interface FranchiseService {
 		
 		public int selectFranchiseTotal(FranchiseVO vo) throws Exception;
 		
-		public FranchiseVO selectFranchiseDetail(String shopname) throws Exception;
 		
 		// 각 지역 통계 
 		public int selectFranchiseSeoulTotal(FranchiseVO vo) throws Exception;

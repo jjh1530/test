@@ -106,5 +106,7 @@ public class FranchiseController {
 			 
 			  return "franchise/franchiseDetail"; 
 		  }
+		  
+		  
 		 
 }

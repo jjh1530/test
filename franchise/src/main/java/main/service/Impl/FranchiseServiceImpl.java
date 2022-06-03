@@ -25,11 +25,6 @@ public class FranchiseServiceImpl implements FranchiseService {
 		return franchiseDAO.selectFranchiseTotal(vo);
 	}
 	
-	@Override
-	public FranchiseVO selectFranchiseDetail(String shopname) throws Exception {
-		return franchiseDAO.selectFranchiseDetail(shopname);
-	}
-	
 	
 	//서울
 	@Override

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+
+<sqlMap namespace="UserSpace">
+	<typeAlias alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias alias="userVO" type="main.service.UserVO"/><!--  데이터를 담을vo  -->
+	
+	
+	<select id="userDAO.selectUserCount" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM franchiseuser WHERE userid = #userid# AND pass = #pass#
+	</select>
+	
+</sqlMap>
